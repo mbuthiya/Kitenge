@@ -1,5 +1,5 @@
 import org.sql2o.*;
 public class DB{
-  public static Sql2o sql2o=new Sql2o("jdbc:postgresql://localhost:5432/name-of-database","james","admin");
+  public static Sql2o sql2o=new Sql2o("jdbc:postgresql://localhost:5432/kitenge","james","admin");
 
 }
