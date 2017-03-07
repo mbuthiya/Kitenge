@@ -11,6 +11,7 @@ public abstract class Kitenge {
 	public int designerId;
     public String type;
     public int id;
+    public String imgUrl;
 
     public int getId(){
     	return id;
@@ -39,6 +40,9 @@ public abstract class Kitenge {
    public int getQuantity(){
    	return quantity;
    }
+   public String getImgUrl(){
+   	return imgUrl;
+   }
 
 @Override
 public boolean equals(Object otherKitenge){
@@ -60,7 +64,7 @@ public boolean equals(Object otherKitenge){
 
 public void save(){
 	try(Connection con = DB.sql2o.open()){
-       String sql = "insert into kitenge (name,description,quantity,size,designerId,type,price) values (:name,:description,:quantity,:size,:designerId,:type,:price)";
+       String sql = "insert into kitenge (name,description,quantity,size,designerId,type,price,imgurl) values (:name,:description,:quantity,:size,:designerId,:type,:price,:imgurl)";
 	   this.id = (int) con.createQuery(sql,true)
 	   .addParameter("name",this.name)
 	   .addParameter("description",this.description)
@@ -68,6 +72,7 @@ public void save(){
 	   .addParameter("size",this.size)
 	   .addParameter("designerId",this.designerId)
 	   .addParameter("type",this.type)
+	   .addParameter("imgurl",this.imgUrl)
 	   .addParameter("price",this.price)
 	   .executeUpdate()
 	   .getKey();
@@ -85,7 +90,7 @@ public static List<Object> all(){
 
 public void update(String name, String description, int quantity,String size, int price){
 	try(Connection con = DB.sql2o.open()){
-		String sql = "update kitenge  set name=:name,description=:description,quantity=:quantity,size=:size,type=:type,price=:price where id=:id";
+		String sql = "update kitenge  set name=:name,description=:description,quantity=:quantity,size=:size,type=:type,price=:price,imgurl=:imgurl where id=:id";
 	    con.createQuery(sql)
 	    .addParameter("name",name)
 	    .addParameter("description",description)
@@ -93,6 +98,7 @@ public void update(String name, String description, int quantity,String size, in
 	    .addParameter("size",size)
 	    .addParameter("type",this.type)
 	    .addParameter("price",price)
+	    .addParameter("imgurl",this.imgUrl)
 	    .addParameter("id",this.id)
 	    .executeUpdate();
 }

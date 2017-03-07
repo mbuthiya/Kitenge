@@ -6,13 +6,14 @@ public class Clothes extends Kitenge{
 
 	public static final String DATABASE_TYPE="clothes";
 
-	public Clothes(String name, String description, int quantity,  String size, int price,int designerId){
+	public Clothes(String name, String description, int quantity,  String size, int price,int designerId,String imgUrl){
 		this.name = name;
 		this.description= description;
 		this.designerId=designerId;
 		this.price=price;
 		this.quantity=quantity;
 		this.size=size;
+		this.imgUrl=imgUrl;
 		type=DATABASE_TYPE;
 
 	}
