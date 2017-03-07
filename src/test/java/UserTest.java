@@ -65,11 +65,19 @@ public class UserTest {
     assertEquals("kitenge", User.find(testUser.getId()).getPassword());
     assertEquals("customer", User.find(testUser.getId()).getType());
   }
-  
+
   @Test
   public void delete_deletesUserFromDB_true() {
     testUser.save();
     testUser.delete();
     assertEquals(0, User.all().size());
+  }
+
+  @Test
+  public void getCart_CheckIfTIRetrievesAllItems_true() {
+    testUser.save();
+    Cart newCart= new Cart(testUser.getId(),1,1);
+    newCart.save();
+    assertEquals(testUser.getCart().contains(newCart), true);
   }
 }
