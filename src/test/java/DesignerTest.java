@@ -72,14 +72,17 @@ public void delete_checksIfAllInstancesAredeleted(){
   assertFalse(Designer.all().contains(newDesigner));
 
 }
-// @Test
-// public void getClothes_checksIfAllClothesForTheDesigner(){
-//   newDesigner.save();
-//
-//
-//   assertFalse(Designer.all().contains(newDesigner));
-//
-// }
+@Test
+public void getClothes_checksIfAllClothesForTheDesigner(){
+    newDesigner.save();
+    Clothes newClothes = new Clothes("romper","short floral pants",10,"medium",3000,newDesigner.getId());
+    newClothes.save();
+    Clothes newClotheez = new Clothes("Haskel","short floral pants",10,"medium",3000,newDesigner.getId());
+    newClotheez.save();
+    List<Clothes> designerClothes=newDesigner.getClothes();
+    assertTrue(newDesigner.getClothes().contains(newClothes));
+    assertEquals(designerClothes.contains(newClotheez),true);
+}
 
 
 }
