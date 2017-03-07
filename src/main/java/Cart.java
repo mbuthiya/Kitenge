@@ -80,9 +80,7 @@ public class Cart{
     try(Connection con=DB.sql2o.open()){
       String sql="delete from cart * where id=:id";
       con.createQuery(sql)
-
       .addParameter("id",this.id)
-
       .executeUpdate();
     }
   }
