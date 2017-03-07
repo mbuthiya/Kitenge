@@ -72,17 +72,15 @@ public void save(){
       .executeUpdate();
     }
   }
-  // //get vitenges
-  // public List<Clothes> getClothes(){
-  //   try(Connection con=DB.sql2o.open()){
-  //     String sql="select * from kitenge  designerid =:id";
-  //     return con.createQuery(sql)
-  //
-  //     .addParameter("id",this.id)
-  //
-  //     .executeAndFetch(Clothes.class);
-  //   }
-  // }
+  //get vitenges
+  public List<Clothes> getClothes(){
+    try(Connection con=DB.sql2o.open()){
+      String sql="select * from kitenge where designerid =:id";
+      return con.createQuery(sql)
+      .addParameter("id",this.id)
+      .executeAndFetch(Clothes.class);
+    }
+  }
 
 
 }
