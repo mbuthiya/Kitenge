@@ -3,12 +3,23 @@
   <head>
     <meta charset="utf-8">
       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+
     <title>Layout</title>
   </head>
   <body>
-
     <div class="container-fluid">
-          #parse($mainTemplate)
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+              <img alt="Brand" src="...">
+            </a>
+          </div>
+        </div>
+      </nav>
+
+          #parse($template)
+
       </div>
       <!-- javascript files -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

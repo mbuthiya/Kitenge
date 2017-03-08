@@ -23,12 +23,12 @@ public abstract class Kitenge {
 
     public String getDescription(){
     	return description;
-    }	
- 
+    }
+
     public String getSize(){
     	return size;
     }
-   
+
    public int getPrice(){
    	   return price;
    }
@@ -36,7 +36,7 @@ public abstract class Kitenge {
    public int getDesignerId(){
    	  return designerId;
    }
-    
+
    public int getQuantity(){
    	return quantity;
    }
@@ -80,11 +80,11 @@ public void save(){
 	  }
 }
 
-public static List<Object> all(){
+public static List<Kitenge> all(){
 	String sql ="select * from kitenge";
 	try(Connection con = DB.sql2o.open()){
 		return con.createQuery(sql)
-		.executeAndFetch(Object.class);
+		.executeAndFetch(Kitenge.class);
 	}
 }
 

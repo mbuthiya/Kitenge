@@ -10,15 +10,14 @@
 
 public class App {
   public static void main(String[] args) {
-    staticFileLocation("/public");
-    String layout = "templates/layout.vtl";
-    User adminUser=new User("admin","admin@admin.com","kitenge",User.USER_TYPE[0]);
-    adminUser.save();
+  staticFileLocation("/public");
+  String layout = "templates/layout.vtl";
+  String adminLayout = "templates/adminLayout.vtl";
 
   get("/", (request,response) ->{
   Map<String, Object> model = new HashMap<String, Object>();
   model.put("session",request.session().attribute("user"));
-  model.put("kitenge", Kitenge.all());
+  model.put("clothes", Clothes.all());
   model.put("template", "templates/index.vtl");
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
@@ -66,7 +65,6 @@ public class App {
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
 
-
   get("/clothes", (request,response) ->{
   Map<String, Object> model = new HashMap<String, Object>();
   model.put("session",request.session().attribute("user"));
@@ -94,41 +92,41 @@ public class App {
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
 
-//route to user
-get("/users/:id",(request,response) ->{
-Map<String, Object> model = new HashMap<String, Object>();
-int id=Integer.parseInt(request.params(":id"));
-model.put("session",request.session().attribute("user"));
-User user =User.find(id);
-model.put("user",user);
-model.put("template", "templates/user.vtl");
-return new ModelAndView(model, layout);
-}, new VelocityTemplateEngine());
+  //route to user
+  get("/users/:id",(request,response) ->{
+  Map<String, Object> model = new HashMap<String, Object>();
+  int id=Integer.parseInt(request.params(":id"));
+  model.put("session",request.session().attribute("user"));
+  User user =User.find(id);
+  model.put("user",user);
+  model.put("template", "templates/user.vtl");
+  return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
 
 
-post("/users/update/:id", (request,response) ->{
-Map<String, Object> model = new HashMap<String, Object>();
-int id=Integer.parseInt(request.params(":id"));
-User user =User.find(id);
-String name = request.queryParams("name");
-String email = request.queryParams("email");
-String password = request.queryParams("password");
-user.update(name,email,password);
-String url=String.format("/users/%d",id);
-response.redirect(url);
-return new ModelAndView(model, layout);
-}, new VelocityTemplateEngine());
+  post("/users/update/:id", (request,response) ->{
+  Map<String, Object> model = new HashMap<String, Object>();
+  int id=Integer.parseInt(request.params(":id"));
+  User user =User.find(id);
+  String name = request.queryParams("name");
+  String email = request.queryParams("email");
+  String password = request.queryParams("password");
+  user.update(name,email,password);
+  String url=String.format("/users/%d",id);
+  response.redirect(url);
+  return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
 
-post("/users/delete/:id", (request,response) ->{
-Map<String, Object> model = new HashMap<String, Object>();
-int id=Integer.parseInt(request.params(":id"));
-User user =User.find(id);
-user.delete();
-request.session().removeAttribute("user");
-String url="/";
-response.redirect(url);
-return new ModelAndView(model, layout);
-}, new VelocityTemplateEngine());
+  post("/users/delete/:id", (request,response) ->{
+  Map<String, Object> model = new HashMap<String, Object>();
+  int id=Integer.parseInt(request.params(":id"));
+  User user =User.find(id);
+  user.delete();
+  request.session().removeAttribute("user");
+  String url="/";
+  response.redirect(url);
+  return new ModelAndView(model, layout);
+  }, new VelocityTemplateEngine());
 
   //route to cart
   get("/cart",(request,response) ->{
@@ -140,7 +138,6 @@ return new ModelAndView(model, layout);
   model.put("template", "templates/cart.vtl");
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
-
 
   // adding items cart from clothes
    post("/clothes/:id/cartAdd", (request,response) ->{
@@ -157,43 +154,23 @@ return new ModelAndView(model, layout);
    }, new VelocityTemplateEngine());
 
    // delete items from cart
-    post("/clothes/:id/cartdelete", (request,response) ->{
+    post("/cart/:id/delete", (request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
-    User user=request.session().attribute("user");
-    int userid  = user.getId();
-    int kitengeid  = Integer.parseInt(request.params(":id"));
-    int quantity= Integer.parseInt(request.queryParams("items"));
-    Cart newcart = new Cart (userid,quantity,kitengeid);
-    newcart.save();
-    newcart.delete();
-    String url=String.format("/clothes/%d",kitengeid);
+    Cart newCart = Cart.find(Integer.parseInt(":id"));
+    newCart.delete();
+    String url="/cart";
     response.redirect(url);
     return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // adding items cart from clothes
-     post("/clothes/:id/update", (request,response) ->{
-     Map<String, Object> model = new HashMap<String, Object>();
-     User user=request.session().attribute("user");
-     int userid  = user.getId();
-     int kitengeid  = Integer.parseInt(request.params(":id"));
-     int quantity= Integer.parseInt(request.queryParams("items"));
-     Cart newcart = new Cart (userid,quantity,kitengeid);
-     newcart.save();
-     newcart.update(userid,quantity, kitengeid);
-     String url=String.format("/clothes/%d",kitengeid);
-     response.redirect(url);
-     return new ModelAndView(model, layout);
-     }, new VelocityTemplateEngine());
-
      //List of all designers
-     get("/designers",(request,response) ->{
-     Map<String, Object> model = new HashMap<String, Object>();
-     model.put("session",request.session().attribute("user"));
-     model.put("designer",Designer.all());
-     model.put("template", "templates/designers.vtl");
-     return new ModelAndView(model, layout);
-     }, new VelocityTemplateEngine());
+    get("/designers",(request,response) ->{
+    Map<String, Object> model = new HashMap<String, Object>();
+    model.put("session",request.session().attribute("user"));
+    model.put("designer",Designer.all());
+    model.put("template", "templates/designers.vtl");
+    return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
      //List of all designers
      get("/designers/:id",(request,response) ->{
@@ -220,7 +197,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/designers/new",(request,response) ->{
@@ -234,7 +211,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/designers/:id",(request,response) ->{
@@ -251,7 +228,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     //saving new designer
@@ -270,7 +247,7 @@ return new ModelAndView(model, layout);
 
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     // delete a designer
@@ -289,7 +266,7 @@ return new ModelAndView(model, layout);
 
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     //route to update designer
@@ -309,7 +286,7 @@ return new ModelAndView(model, layout);
       url = "/";
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     //Clothes Section
@@ -325,7 +302,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/clothes/:id",(request,response) ->{
@@ -342,7 +319,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/clothes/new",(request,response) ->{
@@ -356,7 +333,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     post("admin/clothes/new",(request,response) ->{
@@ -379,7 +356,8 @@ return new ModelAndView(model, layout);
        url = "/";
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
+
     }, new VelocityTemplateEngine());
     post("admin/clothes/:id/delete",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
@@ -395,7 +373,7 @@ return new ModelAndView(model, layout);
        url = "/";
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     //route to update clothes
@@ -421,10 +399,7 @@ return new ModelAndView(model, layout);
     }
 
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
-
 }
-
-
 }

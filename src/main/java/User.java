@@ -94,7 +94,6 @@ public class User {
          .addParameter("name", name)
          .addParameter("email", email)
          .addParameter("password", password)
-
          .addParameter("id", id)
          .executeUpdate();
     }
