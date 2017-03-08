@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1>$clothes.getName()</h1>
+    <h3>Designed by:designer.getName()</h3>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-4">
+    <div class="row">
+      <!-- delete -->
+      <div class="col-md-12">
+        <form action="admin/clothes/$clothes.getId()/delete" method="post">
+          <button type="submit" name="button">Delete Garment</button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="row">
+      <h2>Update Garment Details</h2>
+    </div>
+    <div class="row">
+      <form action="admin/clothes/$clothes.getId()/update" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" value="$clothes.getName()" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" name="description" value="$clothes.getDescription()" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="text" name="quantity" value="$clothes.getQuantity()" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="size">Size</label>
+          <input type="text" name="size" value="$clothes.getSize()" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="text" name="price" value="$clothes.getPrice()" class="form-control">
+        </div>
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </div>
+
+
+  </div>
+  <div class="col-md-4"></div>
+</div>
