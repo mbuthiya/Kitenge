@@ -10,7 +10,7 @@ public DatabaseRule database = new DatabaseRule();
 
 @Test
 public void instanceof_instantiatesTrue(){
-	Clothes newClothes = new Clothes("romper","short floral pants",10,"medium",3000,1,"http://dhbdbhbdhb.com");
+Clothes newClothes = new Clothes("romper","short floral pants",10,"medium",3000,1,"http://dhbdbhbdhb.com");
     assertEquals(true,newClothes instanceof Clothes);
 }
 @Test
