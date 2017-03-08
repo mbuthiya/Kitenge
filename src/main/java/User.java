@@ -76,15 +76,25 @@ public class User {
         return user;
     }
   }
-
-  public void update(String name, String email, String password, String type) {
+  public static User findLogin(String password) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE users SET name = :name, email = :email, password = :password, type= :type WHERE id = :id";
+      String sql = "SELECT * FROM users WHERE password=:password";
+      User user = con.createQuery(sql)
+        .addParameter("password", password)
+        .throwOnMappingFailure(false)
+        .executeAndFetchFirst(User.class);
+        return user;
+    }
+  }
+
+  public void update(String name, String email, String password) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE users SET name = :name, email = :email, password = :password WHERE id = :id";
       con.createQuery(sql)
          .addParameter("name", name)
          .addParameter("email", email)
          .addParameter("password", password)
-         .addParameter("type", type)
+
          .addParameter("id", id)
          .executeUpdate();
     }
