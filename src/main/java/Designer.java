@@ -24,7 +24,7 @@ public class Designer{
   public int getId(){
     return id;
   }
-public void save(){
+  public void save(){
   try(Connection con=DB.sql2o.open()){
     String savesql="insert into  designer (name) values(:name);";
   this.id=(int)  con.createQuery(savesql,true)
