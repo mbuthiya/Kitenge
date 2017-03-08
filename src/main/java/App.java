@@ -12,13 +12,14 @@ public class App {
   public static void main(String[] args) {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
+    String adminLayout="templates/adminLayout.vtl";
     User adminUser=new User("admin","admin@admin.com","kitenge",User.USER_TYPE[0]);
     adminUser.save();
 
   get("/", (request,response) ->{
   Map<String, Object> model = new HashMap<String, Object>();
   model.put("session",request.session().attribute("user"));
-  model.put("kitenge", Kitenge.all());
+  model.put("clothes",Clothes.allClothes());
   model.put("template", "templates/index.vtl");
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
@@ -80,7 +81,7 @@ public class App {
   int id=Integer.parseInt(request.params(":id"));
   model.put("session",request.session().attribute("user"));
   Clothes clothes =Clothes.find(id);
-  model.put("clothes",clothes);
+  model.put("clothe",clothes);
   model.put("template", "templates/cloth.vtl");
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
@@ -157,35 +158,16 @@ return new ModelAndView(model, layout);
    }, new VelocityTemplateEngine());
 
    // delete items from cart
-    post("/clothes/:id/cartdelete", (request,response) ->{
+    post("/cart/:id/cartdelete", (request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
-    User user=request.session().attribute("user");
-    int userid  = user.getId();
-    int kitengeid  = Integer.parseInt(request.params(":id"));
-    int quantity= Integer.parseInt(request.queryParams("items"));
-    Cart newcart = new Cart (userid,quantity,kitengeid);
-    newcart.save();
+    Cart newcart = Cart.find(Integer.parseInt(":id"));
     newcart.delete();
-    String url=String.format("/clothes/%d",kitengeid);
+    String url="/cart";
     response.redirect(url);
     return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // adding items cart from clothes
-     post("/clothes/:id/update", (request,response) ->{
-     Map<String, Object> model = new HashMap<String, Object>();
-     User user=request.session().attribute("user");
-     int userid  = user.getId();
-     int kitengeid  = Integer.parseInt(request.params(":id"));
-     int quantity= Integer.parseInt(request.queryParams("items"));
-     Cart newcart = new Cart (userid,quantity,kitengeid);
-     newcart.save();
-     newcart.update(userid,quantity, kitengeid);
-     String url=String.format("/clothes/%d",kitengeid);
-     response.redirect(url);
-     return new ModelAndView(model, layout);
-     }, new VelocityTemplateEngine());
-
+    
      //List of all designers
      get("/designers",(request,response) ->{
      Map<String, Object> model = new HashMap<String, Object>();
@@ -220,7 +202,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/designers/new",(request,response) ->{
@@ -234,7 +216,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model,adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/designers/:id",(request,response) ->{
@@ -251,7 +233,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     //saving new designer
@@ -270,7 +252,7 @@ return new ModelAndView(model, layout);
 
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     // delete a designer
@@ -289,7 +271,7 @@ return new ModelAndView(model, layout);
 
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model,adminLayout);
     }, new VelocityTemplateEngine());
 
     //route to update designer
@@ -309,7 +291,7 @@ return new ModelAndView(model, layout);
       url = "/";
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     //Clothes Section
@@ -325,7 +307,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/clothes/:id",(request,response) ->{
@@ -342,7 +324,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model,adminLayout);
     }, new VelocityTemplateEngine());
 
     get("admin/clothes/new",(request,response) ->{
@@ -356,7 +338,7 @@ return new ModelAndView(model, layout);
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     post("admin/clothes/new",(request,response) ->{
@@ -379,8 +361,9 @@ return new ModelAndView(model, layout);
        url = "/";
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
+
     post("admin/clothes/:id/delete",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url;
@@ -395,7 +378,7 @@ return new ModelAndView(model, layout);
        url = "/";
     }
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     //route to update clothes
@@ -421,7 +404,7 @@ return new ModelAndView(model, layout);
     }
 
     response.redirect(url);
-    return new ModelAndView(model, layout);
+    return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
 }

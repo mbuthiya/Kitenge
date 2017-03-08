@@ -1,1 +1,57 @@
-<h1>cloth</h1>
+<div class="container">
+<nav class="navbar navbar-transparent">
+<div class="clothesHeader">
+<h1>$clothe.getName()</h1>
+</div>
+</nav>
+
+<div class ="row">
+<div class ="col-md-6">
+<img src="$clothe.getImgUrl()"/>
+
+</div>
+<div class ="col-md-6">
+<li class="list-group-item disabled list-group-item-info"> 
+$clothe.getPrice()
+</li>
+<br>
+<br>
+<li class="list-group-item"> 
+$clothe.getDescription()
+</li>
+<br>
+<br>
+<li class="list-group-item"> 
+$clothe.getSize()
+</li>
+<br>
+<br>
+<form action="/clothes/$clothe.getId()/cartAdd" method="post">
+<label for="quantity"> QUANTITY </label>
+<select class="form-control" data-live-search="true" name="items">
+  <option data-tokens ="1"> 1 </option>
+  <option data-tokens ="2"> 2 </option>
+  <option data-tokens ="3"> 3 </option>
+  <option data-tokens ="4"> 4 </option>
+  <option data-tokens ="5"> 5 </option>
+  <option data-tokens ="6"> 6 </option>
+  <option data-tokens ="7"> 7 </option>
+  <option data-tokens ="8"> 8 </option>
+  <option data-tokens ="9"> 9 </option>
+  <option data-tokens ="10"> 10 </option>
+</select>
+ 
+
+<br>
+<br>
+
+<button type="submit" class="btn btn-info">  ADD TO CART </button>
+</form>
+ 
+	
+
+</div>
+</div>
+</div>
+
+
