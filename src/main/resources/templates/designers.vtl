@@ -1,0 +1,22 @@
+<div class="container">
+<nav class="navbar navbar-transparent">
+<div class="designerHeader">
+<h1> DESIGNERS</h1>
+</div>
+</nav>
+
+#if($designer)
+#foreach($design in $designer)
+
+<li class="list-group-item"> 
+<a href="/designers/$design.getId()"> $design.getName()</a>
+</li>
+<br>
+<br>
+
+#end
+#else
+<h1> Designers yet!!! </h1>
+#end
+</div>
+
