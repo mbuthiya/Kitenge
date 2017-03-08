@@ -1,0 +1,32 @@
+<div class="row">
+  <a href="admin/clothes/new">Add new Clothes</a>
+</div>
+<div class="row">
+  <table id="designers" class="display" cellspacing="0" width="100%">
+    <thead>
+           <tr>
+               <th>Name</th>
+               <th>Description</th>
+               <th>Quantity</th>
+               <th>Size</th>
+               <th>Price</th>
+               <th>DesignerId</th>
+               <th>Image Url</th>
+           </tr>
+           <tbody>
+            #foreach($cloth in $clothes)
+            <tr>
+                <td>$cloth.getName()</td>
+                <td>$cloth.getDescription()</td>
+                <td>$cloth.getQuantity()</td>
+                <td>$cloth.getSize()</td>
+                <td>$cloth.getPrice()</td>
+                <td>$cloth.getDesignerId()</td>
+                <td>$cloth.getImgUrl()</td>
+                
+            </tr>
+            #end
+          </tbody>
+       </thead>
+    </table>
+</div>

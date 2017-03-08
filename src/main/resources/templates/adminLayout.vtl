@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <!-- data tables  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    <title>Layout</title>
+  </head>
+  <body>
+  <!-- whole body -->
+    <div class="container-fluid">
+      <!-- TOP navigation row -->
+      <div class="row">
+        <nav class="adminTopNavbar">
+          <ul>
+            <li><a href="/">Go To Website</a></li>
+          </ul>
+          <form action="/" method="post">
+            <button type="submit" name="button" class="adminSignOut">Sign Out</button>
+          </form>
+
+        </nav>
+      </div>
+     <!-- side navigation and Body -->
+     <div class="row">
+       <div class="col-md-4 col-lg-4">
+         <!-- side navigation panel -->
+         <nav class="adminSideNavBar">
+           <ul>
+             <li><a href="admin/designers">Designers</a></li>
+             <li><a href="admin/clothes">Clothes</a></li>
+
+           </ul>
+         </nav>
+
+       </div>
+       <!-- admin body -->
+          <div class="container-fluid">
+             #parse($template)
+         </div>
+     </div>
+
+    </div>
+
+
+      <!-- javascript files -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+
+      </script>
+      <script src="app.js">
+
+      </script>
+
+  </body>
+</html>
