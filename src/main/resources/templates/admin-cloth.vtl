@@ -8,7 +8,7 @@
     <div class="row">
       <!-- delete -->
       <div class="col-md-12">
-        <form action="admin/clothes/$clothes.getId()/delete" method="post">
+        <form action="/admin/clothes/$clothes.getId()/delete" method="post">
           <button type="submit" name="button">Delete Garment</button>
         </form>
       </div>
@@ -24,7 +24,7 @@
       <h2>Update Garment Details</h2>
     </div>
     <div class="row">
-      <form action="admin/clothes/$clothes.getId()/update" method="post">
+      <form action="/admin/clothes/$clothes.getId()/update" method="post">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" name="name" value="$clothes.getName()" class="form-control">

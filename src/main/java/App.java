@@ -185,8 +185,9 @@ public class App {
 
     //  Admin Section
     //  get all designers
-    get("admin/designers",(request,response) ->{
+    get("/admin/designers",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
+    request.session().attribute("user");
     User user=request.session().attribute("user");
     if(user.getType().equals("admin")){
       model.put("session",request.session().attribute("user"));
@@ -201,7 +202,7 @@ public class App {
     }, new VelocityTemplateEngine());
 
 //for deletion........................................................
-    get("admin/designers/new",(request,response) ->{
+    get("/admin/designers/new",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     User user=request.session().attribute("user");
     if(user.getType().equals("admin")){
@@ -215,7 +216,7 @@ public class App {
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 //.................................................................
-    get("admin/designers/:id",(request,response) ->{
+    get("/admin/designers/:id",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     User user=request.session().attribute("user");
     if(user.getType().equals("admin")){
@@ -233,26 +234,22 @@ public class App {
     }, new VelocityTemplateEngine());
 
     //saving new designer
-    post("admin/designers/new",(request,response) ->{
+    post("/admin/designers/new",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url ;
     User user=request.session().attribute("user");
-    if(user.getType().equals("admin")){
+
       String name = request.queryParams("name");
       Designer designer = new Designer(name);
       designer.save();
-       url = "admin/designers";
-    }
-    else{
-      url = "/";
+       url = "/admin/designers";
 
-    }
     response.redirect(url);
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
     // delete a designer
-    post("admin/designers/:id/delete",(request,response) ->{
+    post("/admin/designers/:id/delete",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url ;
     User user=request.session().attribute("user");
@@ -260,7 +257,7 @@ public class App {
        int id = Integer.parseInt(request.params(":id"));
        Designer designer=Designer.find(id);
        designer.delete();
-       url = "admin/designers";
+       url = "/admin/designers";
     }
     else{
       url = "/";
@@ -271,7 +268,7 @@ public class App {
     }, new VelocityTemplateEngine());
 
     //route to update designer
-    post("admin/designers/:id/update",(request,response) ->{
+    post("/admin/designers/:id/update",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url;
     User user=request.session().attribute("user");
@@ -280,7 +277,7 @@ public class App {
        Designer designer=Designer.find(id);
        String name = request.queryParams("name");
        designer.update(name);
-       url = "admin/designers";
+       url = "/admin/designers";
 
     }
     else{
@@ -291,7 +288,7 @@ public class App {
     }, new VelocityTemplateEngine());
 
     //Clothes Section
-    get("admin/clothes",(request,response) ->{
+    get("/admin/clothes",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     User user=request.session().attribute("user");
     if(user.getType().equals("admin")){
@@ -306,10 +303,10 @@ public class App {
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
-    get("admin/clothes/:id",(request,response) ->{
+    get("/admin/clothes/:id",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     User user=request.session().attribute("user");
-    if(user.getType().equals("admin")){
+      if(user.getType().equals("admin")){
       int id = Integer.parseInt(request.params(":id"));
       Clothes clothes=Clothes.find(id);
       Designer designer=Designer.find(clothes.getDesignerId());
@@ -325,7 +322,7 @@ public class App {
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
-    get("admin/clothes/new",(request,response) ->{
+    get("/admin/clothes/new",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     User user=request.session().attribute("user");
     if(user.getType().equals("admin")){
@@ -340,7 +337,7 @@ public class App {
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
-    post("admin/clothes/new",(request,response) ->{
+    post("/admin/cloth/new",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url;
     User user=request.session().attribute("user");
@@ -354,7 +351,7 @@ public class App {
       String imgUrl = request.queryParams("imgUrl");
       Clothes cloth = new Clothes(name, description, quantity, size, price, designer.getId(), imgUrl);
       cloth.save();
-      url = "admin/clothes";
+      url = "/admin/clothes";
     }
     else{
        url = "/";
@@ -363,7 +360,7 @@ public class App {
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
-    post("admin/clothes/:id/delete",(request,response) ->{
+    post("/admin/clothes/:id/delete",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url;
     User user=request.session().attribute("user");
@@ -371,7 +368,7 @@ public class App {
        int id = Integer.parseInt(request.params(":id"));
        Clothes clothes = Clothes.find(id);
        clothes.delete();
-        url = "admin/clothes";
+        url = "/admin/clothes";
     }
     else{
        url = "/";
@@ -381,7 +378,7 @@ public class App {
     }, new VelocityTemplateEngine());
 
     //route to update clothes
-    post("admin/clothes/:id/update",(request,response) ->{
+    post("/admin/clothes/:id/update",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url;
     User user=request.session().attribute("user");
@@ -395,7 +392,7 @@ public class App {
        int price =Integer.parseInt(request.queryParams("price"));
        clothes.update(name, description, quantity, size, price);
        model.put("name", name);
-       url = "admin/clothes";
+       url = "/admin/clothes";
     }
     else{
        url = "/";

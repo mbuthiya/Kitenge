@@ -13,7 +13,7 @@
           <h4 class="modal-title">New Designer</h4>
         </div>
         <div class="modal-body">
-        <form action="admin/designers/new" method="post">
+        <form action="/admin/designers/new" method="post">
           <div class="form-group">
             <label for="designerName">Name</label>
             <input type="text" name="name" placeholder="Enter Designer Name" class="form-control">
@@ -37,9 +37,12 @@
             </tr>
         </thead>
           <tbody>
-            #foreach($design in $designer)
-              <td><a href="admin/designers/$design.getId()"> $design.getName()</a></td>
-            #end
+            <tr>
+              #foreach($design in $designer)
+                <td><a href="/admin/designers/$design.getId()"> $design.getName()</a></td>
+              #end
+            </tr>
+
           </tbody>
       </table>
 </div>
