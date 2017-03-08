@@ -59,11 +59,11 @@ public class UserTest {
   public void update_updateUserInformation_true() {
     User testUser = new User("James", "james@gmail.com", "kitenge_test", "admin");
     testUser.save();
-    testUser.update("Nombu Murage", "nombu@gmail.com", "kitenge", "customer");
+    testUser.update("Nombu Murage", "nombu@gmail.com", "kitenge");
     assertEquals("Nombu Murage", User.find(testUser.getId()).getName());
     assertEquals("nombu@gmail.com", User.find(testUser.getId()).getEmail());
     assertEquals("kitenge", User.find(testUser.getId()).getPassword());
-    assertEquals("customer", User.find(testUser.getId()).getType());
+
   }
 
   @Test
