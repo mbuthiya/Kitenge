@@ -1,9 +1,13 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = "to-do"
+archivesBaseName = "Kitenge"
 version = '1.0'
 mainClassName = "App"
+
+defaultTasks = ['clean']
+task stage(dependsOn: ['clean', 'installApp'])
+
 
 repositories {
   mavenCentral()

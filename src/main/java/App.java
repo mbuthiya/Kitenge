@@ -10,12 +10,23 @@
 
 public class App {
   public static void main(String[] args) {
+    //port heroku
+
+    ProcessBuilder process = new ProcessBuilder();
+        Integer port;
+        if (process.environment().get("PORT") != null) {
+            port = Integer.parseInt(process.environment().get("PORT"));
+        } else {
+            port = 4567;
+        }
+
+       setPort(port);
+
   staticFileLocation("/public");
   String layout = "templates/layout.vtl";
   String adminLayout = "templates/adminLayout.vtl";
-  User adminUser=new User("admin","admin@admin.com","kitenge",User.USER_TYPE[0]);
-  adminUser.save();
-  String adminLayout="templates/adminLayout";
+
+
 
   get("/", (request,response) ->{
   Map<String, Object> model = new HashMap<String, Object>();
@@ -294,7 +305,7 @@ public class App {
     User user=request.session().attribute("user");
     if(user.getType().equals("admin")){
       model.put("session",request.session().attribute("user"));
-      model.put("clothes",Clothes.all());
+      model.put("clothes",Clothes.allClothes());
       model.put("template", "templates/admin-clothes.vtl");
     }
     else{
@@ -304,7 +315,7 @@ public class App {
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
-    get("/admin/clothes/:id",(request,response) ->{
+    get("/admin/cloth/:id",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     User user=request.session().attribute("user");
       if(user.getType().equals("admin")){
@@ -339,7 +350,7 @@ public class App {
     return new ModelAndView(model, adminLayout);
     }, new VelocityTemplateEngine());
 
-    post("/admin/cloth/new",(request,response) ->{
+    post("/admin/clothes/new",(request,response) ->{
     Map<String, Object> model = new HashMap<String, Object>();
     String url;
     User user=request.session().attribute("user");
@@ -349,9 +360,9 @@ public class App {
       int quantity = Integer.parseInt(request.queryParams("quantity"));
       String size = request.queryParams("size");
       int price = Integer.parseInt(request.queryParams("price"));
-      Designer designer = Designer.find(Integer.parseInt(request.queryParams("designerId")));
+      int designerId=Integer.parseInt(request.queryParams("designerId"));
       String imgUrl = request.queryParams("imgUrl");
-      Clothes cloth = new Clothes(name, description, quantity, size, price, designer.getId(), imgUrl);
+      Clothes cloth = new Clothes(name, description, quantity, size, price,designerId, imgUrl);
       cloth.save();
       url = "/admin/clothes";
     }
