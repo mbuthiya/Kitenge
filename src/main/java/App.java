@@ -4,6 +4,7 @@
   import java.util.Map;
   import java.util.HashMap;
   import java.util.List;
+  import java.util.ArrayList;
   import spark.ModelAndView;
   import spark.template.velocity.VelocityTemplateEngine;
   import static spark.Spark.*;
@@ -25,6 +26,8 @@ public class App {
   staticFileLocation("/public");
   String layout = "templates/layout.vtl";
   String adminLayout = "templates/adminLayout.vtl";
+  String adminLayoutTwo = "templates/adminLayoutTwo.vtl";
+  String indexLayout="templates/indexLayout.vtl";
 
   get("/", (request,response) ->{
 
@@ -32,7 +35,7 @@ public class App {
   model.put("session",request.session().attribute("user"));
   model.put("clothes",Clothes.allClothes());
   model.put("template", "templates/index.vtl");
-  return new ModelAndView(model, layout);
+  return new ModelAndView(model, indexLayout);
   }, new VelocityTemplateEngine());
 
   get("/login", (request,response) ->{
@@ -141,12 +144,21 @@ public class App {
   }, new VelocityTemplateEngine());
 
   //route to cart
-  get("/cart",(request,response) ->{
+ get("/cart",(request,response) ->{
   Map<String, Object> model = new HashMap<String, Object>();
   User user=request.session().attribute("user");
-  List<Cart> cart=user.getCart();
+  List<Cart> carts=user.getCart();
+  List<Clothes> clothes=new ArrayList<Clothes>();
+
+  for(Cart cart: carts){
+    int id=cart.getKitengeId();
+    Clothes cloth=Clothes.find(id);
+    clothes.add(cloth);
+
+  }
+  model.put("clothes",clothes);
   model.put("session",request.session().attribute("user"));
-  model.put("cart",cart);
+  model.put("cart",carts);
   model.put("template", "templates/cart.vtl");
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
@@ -189,8 +201,10 @@ public class App {
    Map<String, Object> model = new HashMap<String, Object>();
    int id = Integer.parseInt(request.params(":id"));
    Designer designer = Designer.find(id);
+
    model.put("session",request.session().attribute("user"));
    model.put("designer",designer);
+   model.put("designers",designer.getClothes());
    model.put("template", "templates/designer.vtl");
    return new ModelAndView(model, layout);
    }, new VelocityTemplateEngine());
@@ -213,21 +227,7 @@ public class App {
   return new ModelAndView(model, adminLayout);
   }, new VelocityTemplateEngine());
 
-  //adding new designers
-  get("admin/designers/new",(request,response) ->{
-  Map<String, Object> model = new HashMap<String, Object>();
-  User user=request.session().attribute("user");
-  if(user.getType().equals("admin")){
-    model.put("session",request.session().attribute("user"));
-    model.put("template", "templates/admin-designer-form.vtl");
-  }
-  else{
-    String url = "/";
-    response.redirect(url);
-  }
-  return new ModelAndView(model,adminLayout);
 
-  }, new VelocityTemplateEngine());
 
 //.admin individual designer......................
     get("/admin/designers/:id",(request,response) ->{
@@ -236,6 +236,7 @@ public class App {
     if(user.getType().equals("admin")){
       int id = Integer.parseInt(request.params(":id"));
       Designer designer=Designer.find(id);
+       model.put("clothes",designer.getClothes());
       model.put("session",request.session().attribute("user"));
       model.put("designer",designer);
       model.put("template", "templates/admin-designer.vtl");
@@ -244,7 +245,7 @@ public class App {
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, adminLayout);
+    return new ModelAndView(model, adminLayoutTwo);
     }, new VelocityTemplateEngine());
 
     //saving new designer
@@ -333,7 +334,7 @@ public class App {
       response.redirect(url);
     }
 
-    return new ModelAndView(model,adminLayout);
+    return new ModelAndView(model,adminLayoutTwo);
     }, new VelocityTemplateEngine());
 
     get("/admin/clothes/new",(request,response) ->{
@@ -348,7 +349,7 @@ public class App {
       String url = "/";
       response.redirect(url);
     }
-    return new ModelAndView(model, adminLayout);
+    return new ModelAndView(model, adminLayoutTwo);
     }, new VelocityTemplateEngine());
 
     post("/admin/clothes/new",(request,response) ->{

@@ -1,12 +1,17 @@
-
+<div class="container">
+<nav class="navbar navbar-invisible">
+<hr class="hr">
+<h1 id="heads"> ACCOUNT SETTINGS</h1>
+<hr class="hr">
+</nav>
 
 <div class="col-md-4">
-  <div class="panel panel-default">
+  <div class="panel panel-success">
     <div class="panel-heading">ACCOUNT SETTINGS</div>
     <div class="panel-body">
       <ul class="list-group">
-        <li class="list-group-item" href = "">Change Password <span class="badge"></span></li>
-        <li class="list-group-item">Remove Account <span class="badge"></span></li>
+        <li class="list-group-item">Update Password <span class="badge"></span></li>
+        <li class="list-group-item" >Remove Account <span class="badge"></span></li>
       </ul>
     </div>
   </div>
@@ -26,23 +31,12 @@
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" name="password" id="pwd">
     </div>
-    <button type="submit" class="btn btn-success">Sign Up</button>
+    <button type="submit" class="btn btn-success">Update Account</button>
   </form>
-
+<br>
+<br>
   <form action="/users/delete/:id" method="post" id=delete>
-    <div class="form-group">
-      <label for="name">User Name:</label>
-      <input type="text" class="form-control" name="name" id="name">
-    </div>
-    <div class="form-group">
-      <label for="email">Email address:</label>
-      <input type="email" class="form-control" name="email" id="email">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="password" id="pwd">
-    </div>
-    <button type="submit" class="btn btn-success">Sign Up</button>
+    <button type="submit" class="btn btn-danger"> DELETE ACCOUNT </button>
   </form>
 
 </div>

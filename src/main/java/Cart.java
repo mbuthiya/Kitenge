@@ -6,11 +6,12 @@ public class Cart{
   private int items;
   private int kitengeid;
   private int id;
+  private int clothesId; 
   public Cart(int userid,int items,int kitengeid){
     this.userid=userid;
     this.items=items;
     this.kitengeid=kitengeid;
-}
+} 
 //override
   @Override
   public boolean equals(Object object){
@@ -33,6 +34,7 @@ public class Cart{
   public int getKitengeId(){
     return kitengeid;
   }
+  
   public int getId(){
     return id;
   }
@@ -85,5 +87,6 @@ public class Cart{
       .executeUpdate();
     }
   }
+
 
 }
