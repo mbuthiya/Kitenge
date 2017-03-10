@@ -29,9 +29,8 @@ public class App {
   String adminLayoutTwo = "templates/adminLayoutTwo.vtl";
   String indexLayout="templates/indexLayout.vtl";
 
-
-
   get("/", (request,response) ->{
+
   Map<String, Object> model = new HashMap<String, Object>();
   model.put("session",request.session().attribute("user"));
   model.put("clothes",Clothes.allClothes());
@@ -40,8 +39,10 @@ public class App {
   }, new VelocityTemplateEngine());
 
   get("/login", (request,response) ->{
+
   Map<String, Object> model = new HashMap<String, Object>();
   if(request.session().attribute("user")==null){
+
     model.put("template", "templates/login-form.vtl");
 
   }else{

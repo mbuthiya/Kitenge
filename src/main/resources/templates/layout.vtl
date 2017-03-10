@@ -3,28 +3,131 @@
   <head>
     <meta charset="utf-8">
       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+      <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Dorsa|Economica|Julius+Sans+One|Pontano+Sans|Rajdhani|Teko|Proxima-nova" rel="stylesheet">
+
+      <script src="https://use.fontawesome.com/dc0e08cba8.js"></script>
+      <link rel="stylesheet" type="text/css" href="/style.css">
       <link rel="stylesheet" type="text/css" href="/css/stylesAll.css">>
 
-    <title>Layout</title>
+    <title>Kitenge</title>
   </head>
-  <body>
-    <div class="container-fluid">
-      <nav class="navbar navbar-inverse">
+
+    <header class="layout">
+    <div class="row navRow1">
+      <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-              <img alt="Brand" src="...">
-            </a>
+          <div class="navbar-header navbar-right">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="navbar-nav navUl1">
+              <li><i class="fa fa-user fa-17x" aria-hidden="true"></i>&nbsp;<a href="/login">LOGIN/SIGNUP</a></li> &nbsp;&nbsp;
+              <li><i class="fa fa-wrench fa-17x" aria-hidden="true"></i>&nbsp;<a href="/users/$session.getId()">ACCOUNT</a></li> &nbsp;&nbsp;
+              <li><i class="fa fa-shopping-cart fa-17x">&nbsp;<span class="badge">$cart.getItems()</span></i><a href="/cart">MY CART</a>&nbsp;&nbsp;</li>
+            </ul>
+          </div>
           </div>
         </div>
       </nav>
+    </div>
+<div class="row">
+      <nav class="navbar navbar-static-top">
+        <div class="container-fluid">
+          <div class="navbar-header row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <a href="/"><img alt="Brand" src="/images/logo.png"></a>
+            </div>
+            <div class="col-md-9">
+              <ul class="navbar-nav navUl2">
+                <li><a href="/clothes">CLOTHES</a></li>
+                <li><a href="/clothes">SHOES</a></li>
+                <li><a href="/clothes">HANDBAGS</a></li>
+                <li><a href="/clothes">ACCESSORIES</a></li>
+              </ul>
+            </div>
+            <hr class="bigHrNav">
+          </div>
+        </div>
 
+      </nav>
+    </div>
+    </header>
+
+    <body>
+      <div class="row">
+        <div class="col-md-12">
           #parse($template)
-          
+        </div>
       </div>
-      <!-- javascript files -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <br>
+      <br>
+    <footer class="layout">
+      <div class= "container-fluid" id="layoutFooter">
+        <div class="row rowInfo">
+          <div class="container">
+          <div class= "col-md-3">
+            <h4>OUR STORY</h4>
+            <hr class="bigHr">
+            <p>About</p>
+            <p>Impact</p>
+            <p>How We Do It</p>
+          </div>
+          <div class= "col-md-3">
+            <h4>CONTACT US</h4>
+            <hr class="bigHr">
+            <p>Physical Address:</p>
+            <p>1st Floor, Ngong Lane Plaza</p>
+            <p>Ngong Road, Nairobi</p>
+            <p>P.O BOX 34532-00100</p>
+          </div>
+          <div class= "col-md-3">
+            <h4>SERVICES</h4>
+            <hr class="bigHr">
+            <p>Shipping & Returns</p>
+            <p>Gift Cards and Vouchers</p>
+            <p>Customer Loyalty Discounts</p>
+            <hr>
+          </div>
+          <div class= "col-md-3">
+            <h4>GET THE LATEST</h4>
+            <hr class="bigHr">
+            <p>Don't miss out on our beautiful products and sales.Subscribe to our Newsletter and get</p>
+            <p>15% off on your first order</p>
+            <p></p>
+            <form>
+            <input type="email" name="email" placeholder="Email Address" id="formSubscribe">
+            <button type="submit" class="btn" id="btnSubscribe"><a href="/login"></a>SUBSCRIBE</button>
+          </form>
+          </div>
+        </div>
+      </div>
 
+      <div class="row" id="footer-icons">
+        <p class="social-media">
+          <a href="#"><i class="fa fa-facebook-official fa-3x" aria-hidden="true" style="color:black"></i></a>
+          <a href="#"><i class="fa fa-twitter fa-3x" aria-hidden="true" style="color:black"></i></a>
+          <a href="#"><i class="fa fa-pinterest-square fa-3x" aria-hidden="true" style="color:black"></i></a>
+          <a href="#"><i class="fa fa-tumblr-square fa-3x" aria-hidden="true" style="color:black"></i></a>
+          <a href="#"><i class="fa fa-instagram fa-3x" aria-hidden="true" style="color:black"></i></a>
+          <a href="#"><i class="fa fa-vimeo-square fa-3x" aria-hidden="true" style="color:black"></i></a>
+          <hr class="bigHr">
+        </p>
+        <hr>
+      </div>
+
+      <div class="copyright">
+        <hr>
+        <p>
+        <i class="fa fa-copyright" aria-hidden="true"></i>2017
+        </p>
+      </div>
+
+      </div>
+    </footer>
   </body>
+
+  <!-- javascript files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </html>
