@@ -37,4 +37,6 @@ public static List<Clothes> allClothes(){
 		.executeAndFetch(Clothes.class);
 	}
 }
+
+
 }

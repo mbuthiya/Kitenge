@@ -1,27 +1,28 @@
 <div class="container">
-<nav class="navbar navbar-transparent">
-<div class="clothesHeader">
-<h1>$clothe.getName()</h1>
-</div>
+<nav class="navbar navbar-invisible">
+<hr class="hr">
+<h1 id="heads"> $clothe.getName()</h1>
+<hr class="hr">
 </nav>
 
+
 <div class ="row">
-<div class ="col-md-6">
+<div class ="col-md-6 col">
 <img src="$clothe.getImgUrl()"/>
 
 </div>
 <div class ="col-md-6">
-<li class="list-group-item disabled list-group-item-info"> 
+<li class="list-group-item disabled list-group-item-info texts"> 
 $clothe.getPrice()
 </li>
 <br>
 <br>
-<li class="list-group-item"> 
+<li class="list-group-item disabled list-group-item-info texts"> 
 $clothe.getDescription()
 </li>
 <br>
 <br>
-<li class="list-group-item"> 
+<li class="list-group-item disabled list-group-item-info texts"> 
 $clothe.getSize()
 </li>
 <br>
@@ -45,7 +46,7 @@ $clothe.getSize()
 <br>
 <br>
 
-<button type="submit" class="btn btn-info">  ADD TO CART </button>
+<button type="submit" class="myButton ">  ADD TO CART </button>
 </form>
  
 	

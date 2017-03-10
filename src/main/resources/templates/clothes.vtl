@@ -1,27 +1,28 @@
 <div class="container">
-<nav class="navbar navbar-transparent">
-<div class="clothesHeader">
-<h1> CLOTHES</h1>
-</div>
+<nav class="navbar navbar-invisible">
+<hr class="hr">
+<h1 id="heads"> CLOTHES</h1>
+<hr class="hr">
 </nav>
 
-#if($clothes)
 <div class ="row">
+#if($clothes)
 #foreach($clothe in $clothes)
-<div class ="col-md-4 image">
+<div class ="col-md-3">
 <a href="/clothes/$clothe.getId()">
-<img src="$clothe.getImgUrl()"/></a>
+<img src="$clothe.getImgUrl()" class="img-responsive imglook"/></a>
 <ul>
-<p>$clothe.getName()</p>
-<p>$clothe.getPrice()</p>
+<p class="text">$clothe.getName()</p>
+<p class="text"> $ $clothe.getPrice()</p>
 </ul>
+</div>
 
-</div>
-</div>
+
 #end
 #else
 <h1> NO  Clothes yet!!! </h1>
 #end
+</div>
 </div>
 
 

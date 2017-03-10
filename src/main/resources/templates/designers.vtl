@@ -1,22 +1,20 @@
 <div class="container">
-<nav class="navbar navbar-transparent">
-<div class="designerHeader">
-<h1> DESIGNERS</h1>
-</div>
+<nav class="navbar navbar-invisible">
+<hr class="hr">
+<h1 id="heads"> DESIGNERS</h1>
+<hr class="hr">
 </nav>
-
+<div class= row>
 #if($designer)
 #foreach($design in $designer)
-
-<li class="list-group-item"> 
-<a href="/designers/$design.getId()"> $design.getName()</a>
-</li>
-<br>
-<br>
-
+<div class ="col-md-4">
+<img src="/images/designer.jpg" class="designersImg"/>
+<p><a href="/designers/$design.getId()" class="designertext"> $design.getName()</a></p>
+</div>
 #end
+</div>
+
 #else
 <h1> Designers yet!!! </h1>
 #end
 </div>
-

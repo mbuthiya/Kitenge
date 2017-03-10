@@ -140,7 +140,7 @@ public class App {
   }, new VelocityTemplateEngine());
 
   //route to cart
-  get("/cart",(request,response) ->{
+ get("/cart",(request,response) ->{
   Map<String, Object> model = new HashMap<String, Object>();
   User user=request.session().attribute("user");
   List<Cart> cart=user.getCart();
@@ -190,6 +190,7 @@ public class App {
    Designer designer = Designer.find(id);
    model.put("session",request.session().attribute("user"));
    model.put("designer",designer);
+   model.put("designers",designer.getClothes());
    model.put("template", "templates/designer.vtl");
    return new ModelAndView(model, layout);
    }, new VelocityTemplateEngine());

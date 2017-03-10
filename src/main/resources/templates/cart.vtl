@@ -1,39 +1,30 @@
-<div class="row">
-  <div class="col-md-1"></div>
+<div class="container">
+<nav class="navbar navbar-invisible">
+<hr class="hr">
+<h1 id="heads"> SHOPPING CART</h1>
+<hr class="hr">
+</nav>
 
-  <div class="col-md-10">
-    <form action="/cart">
-    <table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Item name</th>
-                <th>Item Quantities</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-              <th>No.</th>
-              <th>Item name</th>
-              <th>Item Quantities</th>
-              <th>Price</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            <tr>
-              <td>No.</td>
-              <td>Item name</td>
-              <td>Item Quantities</td>
-              <td>Price</td>
-            </tr>
 
-        </tbody>
-    </table>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th class ="th">NAME</th>
+        <th class="th"> SIZE</th>  
+        <th class ="th">PRICE</th> 
+        <th class ="th">QUANTITIES</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td class ="td">$cart.getName()</td> 
+          <td class ="td">$cart.getSize()</td>
+          <td class ="td">$cart.getPrice()</td> 
+          <td class ="td">$cart.getItems()</td> 
+        </tr>
+      
+    </tbody>
+  </table>
 
-  </div>
-</form>
-
-  <div class="col-md-1"></div>
-
-</div>
+    </div>
