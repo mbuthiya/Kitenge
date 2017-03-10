@@ -80,4 +80,17 @@ public class UserTest {
     newCart.save();
     assertEquals(testUser.getCart().contains(newCart), true);
   }
+  @Test
+  public void getCartWithVitenges_CheckIfTIRetrievesAllItems_true() {
+    testUser.save();
+    Clothes newClothes = new Clothes("romper","short floral pants",10,"medium",3000,1,"http://dhbdbhbdhb.com");
+    newClothes.save();
+      Cart newCart= new Cart(testUser.getId(),1,newClothes.getId());
+        newCart.save();
+      Clothes newCloth=Clothes.find(newCart.getKitengeId());
+      assertEquals(newClothes.getName(),"romper");
+    assertEquals(testUser.getCart().contains(newCart), true);
+  }
+
+
 }

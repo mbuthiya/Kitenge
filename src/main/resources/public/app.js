@@ -1,3 +1,5 @@
-$(document).ready(function(){
+$(document).on("scroll", function(){
+
     $('#designers').DataTable();
-});
+
+	});
