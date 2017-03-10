@@ -19,10 +19,10 @@
 		</div>
 	</div>
 
-	<div class="col-md-8">
+	<div class="col-md-8 colDesignerright">
 		#foreach($designer in $designers) 
 		<div class="col-md-4">
-			<img src ="$designer.getImgUrl()">
+			<img src ="$designer.getImgUrl()"  width="70%"/>
 			<ul>
           <p class="text">$designer.getName()</p>
           <p class="text"> $designer.getPrice()</p>

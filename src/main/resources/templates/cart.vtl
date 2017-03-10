@@ -17,19 +17,17 @@
       </tr>
     </thead>
     <tbody>
-      
-        
+     #foreach( $cloth in $clothes )
+         #foreach($cart in $carts)
 
-        <tr>
-             #foreach( $cloth in $clothes )
+      <tr>
           <td class ="td">$cloth.getName()</td> 
           <td class ="td">$cloth.getSize()</td>
           <td class ="td">$ $cloth.getPrice()</td> 
           #end
           
-           #foreach($cart in $carts)
-          <td class ="td">$cart.getItems()</td> 
-            
+                 <td class ="td">$cart.getItems()</td> 
+            #end
             
         </tr>
       

@@ -60,10 +60,10 @@
 	padding-left:10%;
 }
 
-.designerImg{
+.designersImg{
 	padding:1px;
    border:1px solid white;
-   width:40%
+   width:20%;
  
 }
 .colDesignerleft{
@@ -78,4 +78,7 @@
 }
 .cart{
 	width:30%;
+}
+.colDesignerright{
+	padding-right:15%;
 }

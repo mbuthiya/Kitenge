@@ -1,0 +1,161 @@
+            /*Beginning of Layout.vtl*/
+        /*.layout {
+    font-family: 'proxima-nova', sans-serif;
+    font-family: 'Economica', sans-serif;
+    font-family: 'Pontano Sans', sans-serif;
+    font-family: 'Teko', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Dorsa', sans-serif
+}*/
+
+        .container-fluid {
+            max-width: 100%;
+        }
+
+        .group:after, .group:before {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .navRow1 {
+            margin-bottom: 0px;
+        }
+
+        .navUl1 li a {
+            margin-top: 5%;
+            padding-right: 5%;
+            font-weight: normal;
+            font-size: 100%;
+            color: #fff;
+            font-family: 'Economica', sans-serif;
+        }
+
+        .navUl1 li {
+            border-left: 1px solid #fff;
+            padding-left: 5%;
+        }
+
+        .navUl2 li a {
+            margin-top: 0%;
+            padding-right: 10%;
+            padding-left: 10%;
+            font-weight: normal;
+            font-size: 350%;
+            color: #595959;
+            font-family: 'Dorsa', sans-serif;
+        }
+
+        .navUl2 {
+            margin-left: 5%;
+            padding-bottom: 2%
+        }
+
+        .bigHrNav {
+            background-color: #b3b3b3 !important;
+            border: 1px solid #b3b3b3 !important;
+            margin: 0 auto;
+            margin-left: 32%;
+        }
+
+        .bigHr {
+            background-color: #b3b3b3 !important;
+            border: 1px solid #b3b3b3 !important;
+            margin: 0 auto;
+        }
+
+        .navbar-inverse {
+            /*height: 0px;*/
+        }
+
+        .navbar-nav {
+            padding-left: 15px;
+            list-style: none;
+            color: white;
+            font-family: 'proxima-nova', sans-serif;
+            padding-top: 3%;
+        }
+
+        .navbar-nav li {
+            /*margin: 15px;*/
+            padding-left: 15px;
+            list-style: none;
+            color: white;
+            font-family: 'proxima-nova', sans-serif;
+            /*margin-top: -30px;*/
+        }
+
+        .navbar img {
+            width: 150%;
+            margin-top: 10%;
+            padding-left: 5%;
+        }
+
+        .fa-shopping-cart {
+            color: white;
+        }
+
+        .social-media {
+            text-align: center;
+        }
+
+        .fa {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        #layoutFooter {
+            background-color: #f0f0f0;
+            max-width: 100%;
+        }
+
+        .copyright {
+            text-align: center;
+        }
+
+        .rowInfo {
+            margin-top: 2%;
+        }
+
+        #btnSubscribe {
+            width: 100%;
+            max-width: 100%;
+            background: #000000;
+            border: none;
+            -webkit-transition: background 0.3s ease, color 0.3s ease;
+            -moz-transition: background 0.3s ease, color 0.3s ease;
+            -o-transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.3s ease, color 0.3s ease;
+            -webkit-appearance: none;
+            color: #ffffff;
+            display: inline-block;
+            font-family: 'proxima-nova', sans-serif;
+            font-weight: 400;
+            font-size: 13px;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            line-height: normal;
+            padding: 15px 0;
+            font-family: 'proxima-nova', sans-serif;
+            text-transform: uppercase;
+        }
+
+        #formSubscribe {
+            border: none;
+            background-color: white;
+            padding: 6%;
+            outline: none;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            font-size: 13px;
+            font-family: 'proxima-nova', sans-serif;
+            color: #777;
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+            display: block;
+            margin-bottom: 20px;
+            background: #fff;
