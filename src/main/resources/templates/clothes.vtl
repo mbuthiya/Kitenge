@@ -3,26 +3,22 @@
 <hr class="hr">
 <h1 id="heads"> CLOTHES</h1>
 <hr class="hr">
-</nav>
 
-<div class ="row">
-#if($clothes)
-#foreach($clothe in $clothes)
-<div class ="col-md-3">
-<a href="/clothes/$clothe.getId()">
-<img src="$clothe.getImgUrl()" class="img-responsive imglook"/></a>
-<ul>
-<p class="text">$clothe.getName()</p>
-<p class="text"> $ $clothe.getPrice()</p>
-</ul>
+
+<div class="row">
+
+  #foreach($clothe in $clothes)
+  <div class ="col-md-4 imgLook">
+  <a href="/clothes/$clothe.getId()">
+  <img src="$clothe.getImgUrl()" class="img-responsive "/></a>
+  <ul>
+  <p class="text">$clothe.getName()</p>
+  <p class="text"> $ $clothe.getPrice()</p>
+  </ul>
+  </div>
+
+
+  #end
 </div>
 
-
-#end
-#else
-<h1> NO  Clothes yet!!! </h1>
-#end
 </div>
-</div>
-
-

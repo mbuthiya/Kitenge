@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div class="container">
 <nav class="navbar navbar-invisible">
 <hr class="hr">
@@ -18,12 +18,22 @@
     </thead>
     <tbody>
       
+        
+
         <tr>
-          <td class ="td">$cart.getName()</td> 
-          <td class ="td">$cart.getSize()</td>
-          <td class ="td">$cart.getPrice()</td> 
+             #foreach( $cloth in $clothes )
+          <td class ="td">$cloth.getName()</td> 
+          <td class ="td">$cloth.getSize()</td>
+          <td class ="td">$ $cloth.getPrice()</td> 
+          #end
+          
+           #foreach($cart in $carts)
           <td class ="td">$cart.getItems()</td> 
+            
+            
         </tr>
+      
+     
       
     </tbody>
   </table>

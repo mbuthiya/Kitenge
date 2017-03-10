@@ -8,7 +8,7 @@
 
 <div class ="row">
 <div class ="col-md-6 col">
-<img src="$clothe.getImgUrl()"/>
+<img src="$clothe.getImgUrl()" width="75%"/>
 
 </div>
 <div class ="col-md-6">
@@ -29,24 +29,24 @@ $clothe.getSize()
 <br>
 <form action="/clothes/$clothe.getId()/cartAdd" method="post">
 <label for="quantity"> QUANTITY </label>
-<select class="form-control" data-live-search="true" name="items">
-  <option data-tokens ="1"> 1 </option>
-  <option data-tokens ="2"> 2 </option>
-  <option data-tokens ="3"> 3 </option>
-  <option data-tokens ="4"> 4 </option>
-  <option data-tokens ="5"> 5 </option>
-  <option data-tokens ="6"> 6 </option>
-  <option data-tokens ="7"> 7 </option>
-  <option data-tokens ="8"> 8 </option>
-  <option data-tokens ="9"> 9 </option>
-  <option data-tokens ="10"> 10 </option>
+<select class="form-control"  name="items">
+  <option value ="1"> 1 </option>
+  <option value ="2"> 2 </option>
+  <option value ="3"> 3 </option>
+  <option value ="4"> 4 </option>
+  <option value ="5"> 5 </option>
+  <option value ="6"> 6 </option>
+  <option value ="7"> 7 </option>
+  <option value ="8"> 8 </option>
+  <option value ="9"> 9 </option>
+  <option value="10"> 10 </option>
 </select>
  
 
 <br>
 <br>
 
-<button type="submit" class="myButton ">  ADD TO CART </button>
+<button type="submit" class="myButton btn ">Add To Cart</button>
 </form>
  
 	

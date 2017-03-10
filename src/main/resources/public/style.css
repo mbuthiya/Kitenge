@@ -13,6 +13,13 @@
     -o-transition: height 0.3s;
     transition: height 0.3s;
 }
+.indexBody{
+  background:  linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ), url('images/bg.jpg')no-repeat center center;
+  background-size: cover;
+}
 .indexHeader img#logo {
     visibility: visible;
     float: left;
@@ -45,27 +52,7 @@
 .indexHeader nav a:hover {
     text-decoration: none;
 }
-/*.indexHeader.smaller {
-    height: 90px;
-}
-.indexHeader.smaller img#logo {
-  visibility: visible;
-    width: 250px;
-     opacity: 1;
 
-  margin-top: 20px;
-  -webkit-transition: all: opacity 0.3s linear;
-  -moz-transition: all : opacity 0.3s linear;
-  -ms-transition: all: opacity 0.3s linear;
-  -o-transition: all : opacity 0.3s linear;
-  transition: all : opacity 0.3s linear;
-
-
-}
-.indexHeader.smaller nav a {
-    line-height: 75px;
-    color: black;
-}*/
 
 @media all and (max-width: 660px) {
     .indexHeader img#logo {
@@ -83,16 +70,7 @@
         line-height: 50px;
         margin: 0 10px;
     }
-    /*.indexHeader.smaller {
-        height: 75px;
-    }
-
-    .indexHeader.smaller nav {
-        height: 35px;
-    }
-    .indexHeader.smaller nav a {
-        line-height: 35px;
-    }*/
+    
 }
 .indexContent{
   margin-top: 300px;
@@ -101,11 +79,7 @@
 
 .bgImageVtl{
   padding-top: 20%;
-  background:  linear-gradient(
-      rgba(0, 0, 0, 0.45),
-      rgba(0, 0, 0, 0.45)
-    ), url('images/bg.jpg')no-repeat center center;
-  padding-bottom: 14.9%;
+  
 }
 .indexH1{
   font-family: Roboto;

@@ -155,9 +155,10 @@ public class App {
     clothes.add(cloth);
 
   }
-  model.put("clothes",clothes);
+  Object[] listArray=new Object[]{carts,clothes};
+  model.put("listArray",listArray);
   model.put("session",request.session().attribute("user"));
-  model.put("cart",carts);
+  model.put("carts",carts);
   model.put("template", "templates/cart.vtl");
   return new ModelAndView(model, layout);
   }, new VelocityTemplateEngine());
