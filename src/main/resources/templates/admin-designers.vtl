@@ -1,48 +1,51 @@
 <div class="row">
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Designer</button>
 
-  <!-- Modal -->
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+  <div class="col-md-6 col-md-6">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Designer</h4>
-        </div>
-        <div class="modal-body">
-        <form action="/admin/designers/new" method="post">
-          <div class="form-group">
-            <label for="designerName">Name</label>
-            <input type="text" name="name" placeholder="Enter Designer Name" class="form-control">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn  btn-lg modalBtn" data-toggle="modal" data-target="#myModal">Add Designer</button>
 
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">New Designer</h4>
           </div>
-          <button type="submit" name="button">Add Designer</button>
-        </form>
+          <div class="modal-body">
+          <form action="/admin/designers/new" method="post">
+            <div class="form-group">
+              <label for="designerName">Name</label>
+              <input type="text" name="name" placeholder="Enter Designer Name" class="form-control">
+
+            </div>
+            <button type="submit" name="button">Add Designer</button>
+          </form>
+          </div>
+
         </div>
 
       </div>
-
     </div>
+
   </div>
 
-</div>
-<div class="row">
-  <table id="designers" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-          <tbody>
-            <tr>
-              #foreach($design in $designer)
-                <td><a href="/admin/designers/$design.getId()"> $design.getName()</a></td>
-              #end
-            </tr>
+  <div class="col-md-6 col-lg-6 text-center" >
+    <h1>List Of All Designers</h1>
+    <hr class="desinersHr">
+    <ul class="desinersList">
+      #foreach($design in $designer)
 
-          </tbody>
-      </table>
+
+      <li><a href="/admin/designers/$design.getId()"> $design.getName()</a></li>
+
+
+      #end
+
+    </ul>
+
+  </div>
 </div>

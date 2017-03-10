@@ -65,10 +65,12 @@ public class Designer{
   public void delete(){
     try(Connection con=DB.sql2o.open()){
       String sql="delete from designer * where id=:id";
+      String sql2="delete from kitenge * where designerId=:id";
+      con.createQuery(sql2)
+        .addParameter("id",this.id)
+        .executeUpdate();
       con.createQuery(sql)
-
       .addParameter("id",this.id)
-
       .executeUpdate();
     }
   }

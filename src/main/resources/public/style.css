@@ -1,0 +1,278 @@
+/*./.............................................................................*/
+.indexHeader {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    -ms-transition: height 0.3s;
+    -o-transition: height 0.3s;
+    transition: height 0.3s;
+}
+.indexHeader img#logo {
+    visibility: visible;
+    float: left;
+    opacity: 1;
+    padding-top: 1%;
+      width: 250px;
+    -webkit-transition: all  visibility 0s 0.3s, opacity 2s linear;
+    -moz-transition: all visibility 0s 0.3s, opacity 2s linear;
+    -ms-transition: all visibility 0s 0.3s, opacity 2s linear;
+    -o-transition: all visibility 0s 0.3s, opacity 2s linear;
+    transition: all visibility 0s 0.3s, opacity 2s linear;
+}
+.indexHeader nav {
+    display: inline-block;
+    float: right;
+}
+.indexHeader nav a {
+    line-height: 80px;
+    padding-right: 50px;
+    margin:0;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.indexHeader nav a:hover {
+    text-decoration: none;
+}
+/*.indexHeader.smaller {
+    height: 90px;
+}
+.indexHeader.smaller img#logo {
+  visibility: visible;
+    width: 250px;
+     opacity: 1;
+
+  margin-top: 20px;
+  -webkit-transition: all: opacity 0.3s linear;
+  -moz-transition: all : opacity 0.3s linear;
+  -ms-transition: all: opacity 0.3s linear;
+  -o-transition: all : opacity 0.3s linear;
+  transition: all : opacity 0.3s linear;
+
+
+}
+.indexHeader.smaller nav a {
+    line-height: 75px;
+    color: black;
+}*/
+
+@media all and (max-width: 660px) {
+    .indexHeader img#logo {
+        display: block;
+        text-align: center;
+    }
+    .indexHeader nav {
+        display: block;
+        float: none;
+        height: 50px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .indexHeader nav a {
+        line-height: 50px;
+        margin: 0 10px;
+    }
+    /*.indexHeader.smaller {
+        height: 75px;
+    }
+
+    .indexHeader.smaller nav {
+        height: 35px;
+    }
+    .indexHeader.smaller nav a {
+        line-height: 35px;
+    }*/
+}
+.indexContent{
+  margin-top: 300px;
+  overflow: hidden;
+}
+
+.bgImageVtl{
+  padding-top: 20%;
+  background:  linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ), url('images/bg.jpg')no-repeat center center;
+  padding-bottom: 14.9%;
+}
+.indexH1{
+  font-family: Roboto;
+  font-size: 80px;
+  font-weight: bolder;;
+  color: white;
+  margin-bottom:2%;
+
+}
+.indexClothesLink{
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  border: 1px solid white;
+  padding: 1% 2%;
+  font-family: Roboto;
+
+}
+.indexClothesLink:hover{
+  text-decoration: none;
+  color: white;
+}
+/*...............................................................................*/
+/*ADmin Layout*/
+.adminTopNavbar ul{
+list-style-type: none;
+margin: 0;
+padding: 0;
+padding-bottom: 3%;
+background-color: black;
+}
+.adminTopNavbar ul li{
+  display: inline-block;
+  margin-top: 2%;
+  margin-left: 2%;
+
+}
+
+button.adminSignOut{
+  position: absolute;
+  right: 0;
+  top: 5.7%;
+  border: 1px solid white;
+  background-color: inherit;
+  color: white;
+
+  margin-right: 10%;
+
+}
+button.adminSignOut:hover{
+  position: absolute;
+  right: 0;
+  top: 4%;
+  border: 1px solid white;
+  background-color: inherit;
+  color: white;
+  margin-right: 10%;
+
+}
+.adminTopNavbar ul li a{
+color: white;
+font-size: 18px;
+text-decoration: none;
+}
+.adminTopNavbar ul li a:hover{
+text-decoration: none;
+}
+.webLink{
+  border: 1px solid white;
+  padding: 1% 2%;
+
+}
+.modalBtn{
+  width: 100%;
+  margin-top: 30%;
+  background-color: black;
+  color: white;
+}
+.modalBtn:hover{
+  width: 100%;
+  margin-top: 30%;
+  background-color: black;
+  color: white;
+}
+.desinersList{
+  float: left;
+  list-style-type: none;
+}
+.desinersList li a{
+  color: black;
+  font-size: 26px;
+}
+.desinersHr{
+color: black;
+}
+.clothesForm{
+  margin-top: 2%;
+  box-shadow: 1px 1px 1px #888888;
+  border-top: 5px solid black;
+  border-radius: 2%;
+  padding: 2%;
+}
+.clothesForm .newClothesBtn{
+  width: 50%;
+  background-color: black;
+  color: white;
+}
+.newClothesH1 h1{
+  margin-top: 25%;
+  text-decoration: underline;
+
+}
+/*............................*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 2%;
+}
+
+th, td{
+  padding: 15px;
+  text-align: center;
+  height: 50px;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+    border: 1px solid black;
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    vertical-align: bottom;
+
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+th {
+    background-color: #000000;
+    color: white;
+
+}
+.newClothesLink{
+
+  margin-top: 10%;
+  background-color: black;
+
+  border: 1px solid black;
+  padding: 1%;
+  text-align: center;
+
+}
+.newClothesLink a{
+  color: white;
+  font-size: 20px;
+
+}
+.newClothesLink a:hover{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+
+}
+.deletebtn button{
+  width: 50%;
+  background-color: black;
+  color: white;
+}
+.deletebtn button:hover{
+  width: 50%;
+  background-color: black;
+  color: white;
+}

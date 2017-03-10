@@ -1,41 +1,51 @@
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <form action="/admin/clothes/new" method="post">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name"  class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" name="description"  class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="quantity">Quantity</label>
-        <input type="text" name="quantity"  class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="size">Size</label>
-        <input type="text" name="size"  class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <input type="text" name="price"  class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="designerId">Designer</label>
-        <select class="form-control" name="designerId">
-          #foreach($designer in $designers)
-            <option value="$designer.getId()">$designer.getName()</option>
-          #end
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="imageUrl">Image Link</label>
-        <input type="text" name="imgUrl"  class="form-control">
-      </div>
-      <button type="submit" name="button">Submit</button>
-    </form>
-  </div>
-  <div class="col-md-4"></div>
+<div class="col-md-4 newClothesH1">
+  <h1>Add new Clothes</h1>
+</div>
+<div class="col-md-8 ">
+  <form  class="clothesForm"action="/admin/clothes/new" method="post">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name"  class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" name="description"  class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="number" name="quantity"  class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="size">Size</label>
+    <select class="form-control" name="size" required>
+      <option value="xs">Extra small</option>
+      <option value="small">small</option>
+      <option value="medium">medium</option>
+      <option value="large">Large</option>
+      <option value="xl">Extra Large</option>
+    </select>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" name="price"  class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="designerId">Designer</label>
+      <select class="form-control" name="designerId" required>
+      #foreach($designer in $designers)
+                  <option value="$designer.getId()">$designer.getName()</option>
+                #end
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image Link</label>
+      <input type="text" name="imgUrl"  class="form-control" required>
+    </div>
+    <button type="submit" name="button" class="btn newClothesBtn">Submit</button>
+  </form>
+</div>
+
+
 </div>

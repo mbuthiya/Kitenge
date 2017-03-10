@@ -106,7 +106,7 @@ public class User {
       .executeUpdate();
     }
   }
-
+ 
   public List<Cart> getCart() {
     try(Connection con = DB.sql2o.open()) {
     String sql="SELECT * FROM cart where userid=:id";
